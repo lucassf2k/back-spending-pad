@@ -6,11 +6,7 @@
     "outDir": "build",
     "baseUrl": "src",
     "sourceMap": true,
-    "rootDirs": ["src", "tests"],
-    "paths": {
-      "@/tests/*": ["../tests/*"],
-      "@/*": ["*"]
-    },
+    "rootDir": "src",
     "esModuleInterop": true,
     "removeComments": true
   },
