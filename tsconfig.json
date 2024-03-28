@@ -4,7 +4,6 @@
     "lib": ["ES2023"],
     "module": "Node16",
     "outDir": "build",
-    "baseUrl": "src",
     "sourceMap": true,
     "rootDir": "src",
     "esModuleInterop": true,
