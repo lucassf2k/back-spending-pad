@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto'
+import { IdService } from '../infrastructure/services/id-service'
 
 export enum TransactionTypes {
   INCOME = 'INCOME',
@@ -7,6 +7,7 @@ export enum TransactionTypes {
 
 export type TransactionProps = {
   value: number
+  titile: string
   description: string
   type: TransactionTypes
 }
@@ -16,7 +17,7 @@ export class Transaction {
   readonly props: TransactionProps
 
   constructor(props: TransactionProps) {
-    if (!this._id) this._id = randomUUID()
+    if (!this._id) this._id = IdService.UUID()
     this.props = props
   }
 }

@@ -1,7 +1,7 @@
-import { randomUUID } from 'node:crypto'
 import { Email } from './email'
 import { IPassword } from './ipassword'
 import { Transaction } from './transaction'
+import { IdService } from '../infrastructure/services/id-service'
 
 export type UserProps = {
   name: string
@@ -15,7 +15,7 @@ export class User {
   readonly props: UserProps
 
   constructor(props: UserProps) {
-    if (!this._id) this._id = randomUUID()
+    if (!this._id) this._id = IdService.UUID()
     this.props = props
   }
 }
