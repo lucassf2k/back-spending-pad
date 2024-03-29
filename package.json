@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./build/main.js",
-    "start:dev": "nodemon --watch --env-file .env 'src/' --exec 'ts-node src/main.ts'"
+    "start:dev": "nodemon --watch --env-file .env 'src/' --exec 'ts-node src/main.ts'",
+    "lint:eslint": "npx eslint 'src/**/*.ts' --fix",
+    "lint:prettier": "npx prettier --write 'src/**/*.ts'"
   },
   "keywords": [],
   "engines": {
