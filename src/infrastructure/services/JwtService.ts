@@ -61,8 +61,3 @@ export class JwtService {
     return Buffer.from(base64, 'base64').toString()
   }
 }
-
-const token = JwtService.generate({ id: 1 }, 'adadadjajdnajdnadkjfinrv', 3600)
-console.log(token)
-const getToken = JwtService.verify(token, 'adadadjajdnajdnadkjfinrv')
-console.log(getToken)
