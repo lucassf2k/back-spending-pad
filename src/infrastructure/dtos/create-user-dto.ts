@@ -1,13 +1,9 @@
 import { z } from 'zod'
 
-export type CreateUserDTO = {
-  name: string
-  email: string
-  password: string
-}
-
 export const CreateUserValidation = z.object({
-  name: z.string().min(1),
-  email: z.string().email(),
-  password: z.string().min(8),
+  name: z.string().min(1, 'nome é obrigatório'),
+  email: z.string().email('e-mail é obrigatório'),
+  password: z.string().min(8, 'senha é no minímo 8 caracteres'),
 })
+
+export type CreateUserDTO = z.infer<typeof CreateUserValidation>
