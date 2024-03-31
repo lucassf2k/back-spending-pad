@@ -6,5 +6,5 @@ export function createUserControllerFactory() {
   let userRepository: IUserRepository
   const createUser = new CreateUser(userRepository)
   const createUserController = new CreateUserController(createUser)
-  return createUserController.handle
+  return createUserController
 }
