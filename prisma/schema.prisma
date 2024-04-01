@@ -21,6 +21,8 @@ model User {
   password_algotithm String
   passowrd_salt      String
   transactions       Transaction[]
+
+  @@map("users")
 }
 
 model Transaction {
@@ -31,4 +33,6 @@ model Transaction {
   type        String
   user        User?   @relation(fields: [user_id], references: [id])
   user_id     String?
+
+  @@map("transactions")
 }
