@@ -14,8 +14,8 @@ export class User {
   readonly _id: string
   readonly props: UserProps
 
-  constructor(props: UserProps) {
-    if (!this._id) this._id = IdService.UUID()
+  constructor(id: string, props: UserProps) {
+    if (!id) this._id = IdService.UUID()
     this.props = props
   }
 }
