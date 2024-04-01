@@ -9,7 +9,7 @@ function main() {
   const app = express()
   app.use(express.json())
   app.use(cors())
-  app.use('api', routes)
+  app.use('/api', routes)
   app.use(errorHandler)
   app.listen(ENV.APP_PORT, () =>
     console.log(`HTTP server is running on PORT ${ENV.APP_PORT}`),

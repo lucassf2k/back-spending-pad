@@ -5,5 +5,6 @@ export class Email {
     if (!email.match(/^(.+)@(.+)$/)) {
       throw new Error('Invalid email')
     }
+    this.value = email
   }
 }

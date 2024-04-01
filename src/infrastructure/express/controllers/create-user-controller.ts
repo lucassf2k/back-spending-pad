@@ -9,7 +9,7 @@ export class CreateUserController implements IController {
   async handle(request: Request, response: Response): Promise<Response> {
     const input = CreateUserValidation.parse(request.body)
     const user = await this.createUser.execute(input)
-    const url = `${request.url}/${user.id}`
-    return response.setHeader('location', url)
+    const url = `${request.url}/${user._id}`
+    return response.setHeader('location', url).end()
   }
 }

@@ -14,8 +14,17 @@ export class User {
   readonly _id: string
   readonly props: UserProps
 
-  constructor(id: string, props: UserProps) {
-    if (!id) this._id = IdService.UUID()
+  private constructor(id: string, props: UserProps) {
+    this._id = id
     this.props = props
+  }
+
+  static create(props: UserProps): User {
+    const newID = IdService.UUID()
+    return new User(newID, props)
+  }
+
+  static restore(id: string, props): User {
+    return new User(id, props)
   }
 }

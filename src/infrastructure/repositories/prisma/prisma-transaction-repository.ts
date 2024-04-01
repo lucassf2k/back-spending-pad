@@ -17,7 +17,7 @@ export class PrismaTransactionRepository implements ITransactionRepository {
       },
     })
     if (!createdTransaction) return undefined
-    return new Transaction(createdTransaction.id, {
+    return Transaction.restore(createdTransaction.id, {
       titile: createdTransaction.title,
       description: createdTransaction.description,
       type: Transaction.getType(createdTransaction.type),
@@ -37,7 +37,7 @@ export class PrismaTransactionRepository implements ITransactionRepository {
       where: { id },
     })
     if (!transaction) return undefined
-    return new Transaction(transaction.id, {
+    return Transaction.restore(transaction.id, {
       titile: transaction.title,
       description: transaction.description,
       type: Transaction.getType(transaction.type),
@@ -50,7 +50,7 @@ export class PrismaTransactionRepository implements ITransactionRepository {
       where: { id },
     })
     if (!transaction) return undefined
-    return new Transaction(transaction.id, {
+    return Transaction.restore(transaction.id, {
       titile: transaction.title,
       description: transaction.description,
       type: Transaction.getType(transaction.type),
@@ -62,15 +62,18 @@ export class PrismaTransactionRepository implements ITransactionRepository {
     const transactions = await this.prismaClient.transaction.findMany({
       where: { user_id: userId },
     })
-    if (transactions.length === 0) return undefined
-    return transactions.map(
-      (transaction) =>
-        new Transaction(transaction.id, {
+    if (transactions.length === 0) return []
+    const output: Transaction[] = []
+    for (const transaction of transactions) {
+      output.push(
+        Transaction.restore(transaction.id, {
           titile: transaction.title,
           description: transaction.description,
           type: Transaction.getType(transaction.type),
           value: transaction.value,
         }),
-    )
+      )
+    }
+    return output
   }
 }

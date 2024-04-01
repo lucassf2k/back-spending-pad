@@ -35,7 +35,7 @@ export class PrismaUserRepository implements IUserRepository {
       where: { id: id },
     })
     if (!user) return undefined
-    return new User(user.id, {
+    return User.restore(user.id, {
       email: new Email(user.email),
       name: user.name,
       password: makePassword(user.password_algotithm).restore(

@@ -1,10 +1,11 @@
 import { CreateUser } from '../../application/use-case/create-user'
-import { IUserRepository } from '../../application/repositories/iuser-repository'
 import { CreateUserController } from '../../infrastructure/express/controllers/create-user-controller'
+import { IController } from '../../infrastructure/express/controllers/icontoller'
+import { PrismaUserRepository } from '../../infrastructure/repositories/prisma/prisma-user-repository'
 
-export function createUserControllerFactory() {
-  let userRepository: IUserRepository
+const userRepository = new PrismaUserRepository()
+
+export function createUserControllerFactory(): IController {
   const createUser = new CreateUser(userRepository)
-  const createUserController = new CreateUserController(createUser)
-  return createUserController
+  return new CreateUserController(createUser)
 }

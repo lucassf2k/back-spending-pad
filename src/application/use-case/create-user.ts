@@ -8,7 +8,7 @@ export class CreateUser {
   constructor(private readonly userRepository: IUserRepository) {}
 
   async execute(input: CreateUserDTO): Promise<User> {
-    const newUser = new User({
+    const newUser = User.create({
       name: input.name,
       email: new Email(input.email),
       password: PBKDF2Password.create(input.password),

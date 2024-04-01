@@ -18,9 +18,18 @@ export class Transaction {
   readonly _id: string
   readonly props: TransactionProps
 
-  constructor(id: string, props: TransactionProps) {
-    if (!id) this._id = IdService.UUID()
+  private constructor(id: string, props: TransactionProps) {
+    this._id = id
     this.props = props
+  }
+
+  static create(props: TransactionProps): Transaction {
+    const newID = IdService.UUID()
+    return new Transaction(newID, props)
+  }
+
+  static restore(id: string, props: TransactionProps): Transaction {
+    return new Transaction(id, props)
   }
 
   static getType(input: string): TransactionTypes {
