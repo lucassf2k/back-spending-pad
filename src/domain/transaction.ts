@@ -9,8 +9,7 @@ export enum TransactionTypes {
 
 export type TransactionProps = {
   value: number
-  titile: string
-  description: string
+  title: string
   type: TransactionTypes
 }
 

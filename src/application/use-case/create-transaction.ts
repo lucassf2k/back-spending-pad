@@ -8,8 +8,7 @@ export class CreateTransaction {
   async execute(input: CreateTransactionDTO) {
     const newTransaction = Transaction.create({
       value: input.value,
-      titile: input.title,
-      description: input.description,
+      title: input.title,
       type: Transaction.getType(input.type),
     })
     return this.transactionRepository.save(input.userId, newTransaction)

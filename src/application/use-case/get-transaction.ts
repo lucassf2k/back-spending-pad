@@ -13,10 +13,9 @@ export class GetTransaction {
   static output(input: Transaction) {
     return {
       id: input._id,
-      title: input.props.titile,
+      title: input.props.title,
       value: input.props.value,
       type: Transaction.typeFromStringToBoolean(input.props.type),
-      description: input.props.description,
     }
   }
 }

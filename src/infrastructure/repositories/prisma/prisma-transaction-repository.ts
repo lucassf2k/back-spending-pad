@@ -9,17 +9,15 @@ export class PrismaTransactionRepository implements ITransactionRepository {
     const createdTransaction = await this.prismaClient.transaction.create({
       data: {
         id: input._id,
-        title: input.props.titile,
+        title: input.props.title,
         type: input.props.type,
-        description: input.props.description,
         value: input.props.value,
         user_id: userId,
       },
     })
     if (!createdTransaction) return undefined
     return Transaction.restore(createdTransaction.id, {
-      titile: createdTransaction.title,
-      description: createdTransaction.description,
+      title: createdTransaction.title,
       type: Transaction.getType(createdTransaction.type),
       value: createdTransaction.value,
     })
@@ -38,21 +36,19 @@ export class PrismaTransactionRepository implements ITransactionRepository {
     })
     if (!transaction) return undefined
     return Transaction.restore(transaction.id, {
-      titile: transaction.title,
-      description: transaction.description,
+      title: transaction.title,
       type: Transaction.getType(transaction.type),
       value: transaction.value,
     })
   }
 
   async get(id: string): Promise<Transaction> {
-    const transaction = await this.prismaClient.transaction.findUnique({
+    const transaction = await this.prismaClient.transaction.findFirst({
       where: { id },
     })
     if (!transaction) return undefined
     return Transaction.restore(transaction.id, {
-      titile: transaction.title,
-      description: transaction.description,
+      title: transaction.title,
       type: Transaction.getType(transaction.type),
       value: transaction.value,
     })
@@ -67,8 +63,7 @@ export class PrismaTransactionRepository implements ITransactionRepository {
     for (const transaction of transactions) {
       output.push(
         Transaction.restore(transaction.id, {
-          titile: transaction.title,
-          description: transaction.description,
+          title: transaction.title,
           type: Transaction.getType(transaction.type),
           value: transaction.value,
         }),

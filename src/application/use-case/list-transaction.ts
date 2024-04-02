@@ -13,10 +13,9 @@ export class ListTransaction {
   static output(transactions: Transaction[]) {
     return transactions.map((transaction) => ({
       id: transaction._id,
-      title: transaction.props.titile,
+      title: transaction.props.title,
       value: transaction.props.value,
       type: Transaction.typeFromStringToBoolean(transaction.props.type),
-      description: transaction.props.description,
     }))
   }
 }
