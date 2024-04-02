@@ -6,7 +6,7 @@ export class ListTransaction {
   constructor(private readonly transactionRepository: ITransactionRepository) {}
 
   async execute(input: ListTransactionDTO) {
-    const transactions = await this.transactionRepository.getAll(input.id)
+    const transactions = await this.transactionRepository.getAll(input.userId)
     return ListTransaction.output(transactions)
   }
 
