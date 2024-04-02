@@ -7,6 +7,7 @@ export class GetTransaction {
 
   async execute(input: GetTransactionDTO) {
     const transaction = await this.transactionRepository.get(input.id)
+    if (!transaction) return undefined
     return GetTransaction.output(transaction)
   }
 

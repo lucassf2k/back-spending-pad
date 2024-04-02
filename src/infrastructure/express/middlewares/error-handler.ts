@@ -11,7 +11,7 @@ export function errorHandler(
   next?: NextFunction,
 ) {
   if (error instanceof ApiError) {
-    return response.status(error.code).json(error.message)
+    return response.status(error.code).send({ message: error.message })
   }
   if (error instanceof ZodError) {
     const zodErrors = error.errors.map((err) => err.message)
