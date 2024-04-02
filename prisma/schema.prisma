@@ -26,13 +26,12 @@ model User {
 }
 
 model Transaction {
-  id          String  @id
-  title       String
-  value       Float
-  description String?
-  type        String
-  user        User?   @relation(fields: [user_id], references: [id])
-  user_id     String?
+  id      String  @id
+  title   String
+  value   Float
+  type    String
+  user    User?   @relation(fields: [user_id], references: [id])
+  user_id String?
 
   @@map("transactions")
 }
