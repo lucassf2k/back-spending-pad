@@ -21,17 +21,21 @@ model User {
   password_algotithm String
   passowrd_salt      String
   transactions       Transaction[]
+  created_at         DateTime      @default(now())
+  updated_at         DateTime      @updatedAt
 
   @@map("users")
 }
 
 model Transaction {
-  id      String  @id
-  title   String
-  value   Float
-  type    String
-  user    User?   @relation(fields: [user_id], references: [id])
-  user_id String?
+  id         String   @id
+  title      String
+  value      Float
+  type       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  user       User?    @relation(fields: [user_id], references: [id])
+  user_id    String?
 
   @@map("transactions")
 }
