@@ -1,13 +1,17 @@
 import { Transaction } from '../../domain/transaction'
 import { ITransactionRepository } from '../repositories/itransaction-repository'
 import { GetTransactionDTO } from '../../infrastructure/dtos/get-transaction-dto'
+import { ApiError } from '../../common/api-error'
+import { StatusCode } from '../../common/status-code'
 
 export class GetTransaction {
   constructor(private readonly transactionRepository: ITransactionRepository) {}
 
   async execute(input: GetTransactionDTO) {
     const transaction = await this.transactionRepository.get(input.id)
-    if (!transaction) return undefined
+    if (!transaction) {
+      throw new ApiError('transação não encontrada', StatusCode.NOT_FOUND)
+    }
     return GetTransaction.output(transaction)
   }
 
