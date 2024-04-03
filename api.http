@@ -13,7 +13,7 @@ POST http://localhost:3001/api/transactions
 Content-Type: application/json
 
 {
-  "userId": "fe8d6d26-1f42-4f41-96b4-ec44c9ee9b9e",
+  "userId": "4064ae0d-388f-4de9-9347-081d2b458420",
   "title": "Gasto no mercado do mês",
   "value": 589.50,
   "type": false
@@ -24,3 +24,6 @@ GET http://localhost:3001/api/transactions/:id
 
 ### Get All User Transaction of id
 GET http://localhost:3001/api/transactions/list/:userId
+
+### Delete Transaction of id
+DELETE http://localhost:3001/api/transactions/:id
