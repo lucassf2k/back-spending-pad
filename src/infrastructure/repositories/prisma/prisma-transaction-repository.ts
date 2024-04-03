@@ -25,6 +25,8 @@ export class PrismaTransactionRepository implements ITransactionRepository {
       title: createdTransaction.title,
       type: Transaction.getType(createdTransaction.type),
       value: createdTransaction.value,
+      createdAt: createdTransaction.created_at,
+      updatedAt: createdTransaction.updated_at,
     })
   }
 
@@ -44,6 +46,8 @@ export class PrismaTransactionRepository implements ITransactionRepository {
       title: transaction.title,
       type: Transaction.getType(transaction.type),
       value: transaction.value,
+      createdAt: transaction.created_at,
+      updatedAt: transaction.updated_at,
     })
   }
 
@@ -56,6 +60,8 @@ export class PrismaTransactionRepository implements ITransactionRepository {
       title: transaction.title,
       type: Transaction.getType(transaction.type),
       value: transaction.value,
+      createdAt: transaction.created_at,
+      updatedAt: transaction.updated_at,
     })
   }
 
@@ -71,6 +77,8 @@ export class PrismaTransactionRepository implements ITransactionRepository {
           title: transaction.title,
           type: Transaction.getType(transaction.type),
           value: transaction.value,
+          createdAt: transaction.created_at,
+          updatedAt: transaction.updated_at,
         }),
       )
     }

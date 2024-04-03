@@ -15,6 +15,8 @@ export class GetUserOfId {
     return {
       id: input._id,
       email: input.props.email,
+      created_at: input.props.createAt,
+      updated_at: input.props.updatedAt,
     }
   }
 }

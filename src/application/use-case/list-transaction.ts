@@ -16,6 +16,8 @@ export class ListTransaction {
       title: transaction.props.title,
       value: transaction.props.value,
       type: Transaction.typeFromStringToBoolean(transaction.props.type),
+      createdAt: transaction.props.createdAt,
+      updatedAt: transaction.props.updatedAt,
     }))
   }
 }

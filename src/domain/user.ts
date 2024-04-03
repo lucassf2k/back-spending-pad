@@ -8,6 +8,8 @@ export type UserProps = {
   email: Email
   password: IPassword
   transactions: Transaction[]
+  createAt?: Date
+  updatedAt?: Date
 }
 
 export class User {
@@ -24,7 +26,7 @@ export class User {
     return new User(newID, props)
   }
 
-  static restore(id: string, props): User {
+  static restore(id: string, props: UserProps): User {
     return new User(id, props)
   }
 }

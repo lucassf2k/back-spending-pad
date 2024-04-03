@@ -17,6 +17,8 @@ export class GetTransaction {
       title: input.props.title,
       value: input.props.value,
       type: Transaction.typeFromStringToBoolean(input.props.type),
+      createdAt: input.props.createdAt,
+      updatedAt: input.props.updatedAt,
     }
   }
 }

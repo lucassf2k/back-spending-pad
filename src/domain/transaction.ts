@@ -11,6 +11,8 @@ export type TransactionProps = {
   value: number
   title: string
   type: TransactionTypes
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 export class Transaction {

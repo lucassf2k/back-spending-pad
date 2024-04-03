@@ -48,6 +48,8 @@ export class PrismaUserRepository implements IUserRepository {
         user.passowrd_salt,
       ),
       transactions: [],
+      createAt: user.created_at,
+      updatedAt: user.updated_at,
     })
   }
 
@@ -64,6 +66,8 @@ export class PrismaUserRepository implements IUserRepository {
         user.passowrd_salt,
       ),
       transactions: [],
+      createAt: user.created_at,
+      updatedAt: user.updated_at,
     })
   }
 }
