@@ -64,3 +64,13 @@ type Params = {
 ```typescript
 type userId = uuid
 ```
+
+### Deletar transação pelo id
+
+**Endpoint:** `DELETE /api/transactions/:id`
+
+### Parâmetros da requisição
+
+```typescript
+type id = uuid
+```
