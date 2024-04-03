@@ -3,9 +3,14 @@ import { User } from '../../../domain/user'
 import { Email } from '../../../domain/email'
 import { makePassword } from '../../../main/factories/password-factory'
 import { IUserRepository } from '../../../application/repositories/iuser-repository'
+import { PrismaClientSingleton } from './prisma-client-singleton'
 
 export class PrismaUserRepository implements IUserRepository {
-  private readonly prismaClient = new PrismaClient()
+  private readonly prismaClient: PrismaClient
+
+  constructor() {
+    this.prismaClient = PrismaClientSingleton.getInstance()
+  }
 
   async save(user: User): Promise<boolean> {
     const createdUser = await this.prismaClient.user.create({

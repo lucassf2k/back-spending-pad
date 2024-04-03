@@ -1,9 +1,14 @@
 import { PrismaClient } from '@prisma/client'
 import { Transaction } from '../../../domain/transaction'
 import { ITransactionRepository } from '../../../application/repositories/itransaction-repository'
+import { PrismaClientSingleton } from './prisma-client-singleton'
 
 export class PrismaTransactionRepository implements ITransactionRepository {
-  private readonly prismaClient = new PrismaClient()
+  private readonly prismaClient: PrismaClient
+
+  constructor() {
+    this.prismaClient = PrismaClientSingleton.getInstance()
+  }
 
   async save(userId: string, input: Transaction): Promise<Transaction> {
     const createdTransaction = await this.prismaClient.transaction.create({
