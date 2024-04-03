@@ -4,6 +4,7 @@ import {
   deleteTransactionControllerFactory,
   getTransactionControllerFactory,
   listTransactionControllerFactory,
+  updateTransactionControllerFactory,
 } from '../../../main/factories/transaction-factories'
 
 const transactionRoutes = Router()
@@ -21,5 +22,8 @@ transactionRoutes.get('/:id', (request: Request, response: Response) => {
 })
 transactionRoutes.delete('/:id', (request: Request, response: Response) => {
   deleteTransactionControllerFactory().handle(request, response)
+})
+transactionRoutes.put('/:id', (request: Request, response: Response) => {
+  updateTransactionControllerFactory().handle(request, response)
 })
 export { transactionRoutes }

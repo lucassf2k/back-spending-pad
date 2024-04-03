@@ -74,3 +74,19 @@ type userId = uuid
 ```typescript
 type id = uuid
 ```
+
+### Atualizar transação pelo id
+
+**Endpoint:** `PUT /api/transactions/:id`
+
+### Parâmetros da requisição
+
+```typescript
+type id = uuid
+
+type Body = {
+  title?: string
+  value?: number
+  type?: boolean
+}
+```

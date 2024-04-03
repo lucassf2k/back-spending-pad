@@ -9,6 +9,8 @@ import { GetTransaction } from '../../application/use-case/get-transaction'
 import { PrismaUserRepository } from '../../infrastructure/repositories/prisma/prisma-user-repository'
 import { DeleteTransactionController } from '../../infrastructure/express/controllers/delete-transaction-controller'
 import { DeleteTransaction } from '../../application/use-case/delete-transaction'
+import { UpdateTransactionController } from '../../infrastructure/express/controllers/update-transaction-controller'
+import { UpdateTransaction } from '../../application/use-case/update-transaction'
 
 const transactionRepository = new PrismaTransactionRepository()
 
@@ -34,4 +36,9 @@ export function getTransactionControllerFactory(): IController {
 export function deleteTransactionControllerFactory(): IController {
   const deleteTransaction = new DeleteTransaction(transactionRepository)
   return new DeleteTransactionController(deleteTransaction)
+}
+
+export function updateTransactionControllerFactory(): IController {
+  const updateTransaction = new UpdateTransaction(transactionRepository)
+  return new UpdateTransactionController(updateTransaction)
 }

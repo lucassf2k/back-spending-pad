@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { Transaction } from '../../../domain/transaction'
-import { ITransactionRepository } from '../../../application/repositories/itransaction-repository'
 import { PrismaClientSingleton } from './prisma-client-singleton'
+import { ITransactionRepository } from '../../../application/repositories/itransaction-repository'
 
 export class PrismaTransactionRepository implements ITransactionRepository {
   private readonly prismaClient: PrismaClient
@@ -30,12 +30,24 @@ export class PrismaTransactionRepository implements ITransactionRepository {
     })
   }
 
-  // async update(
-  //   id: string,
-  //   updatedTransaction: Transaction,
-  // ): Promise<Transaction> {
-  //   throw new Error('Method not implemented.')
-  // }
+  async update(updatedTransaction: Transaction): Promise<Transaction> {
+    const transaction = await this.prismaClient.transaction.update({
+      where: { id: updatedTransaction._id },
+      data: {
+        title: updatedTransaction.props.title,
+        value: updatedTransaction.props.value,
+        type: updatedTransaction.props.type,
+      },
+    })
+    if (!transaction) return undefined
+    return Transaction.restore(transaction.id, {
+      title: transaction.title,
+      type: Transaction.getType(transaction.type),
+      value: transaction.value,
+      createdAt: transaction.created_at,
+      updatedAt: transaction.updated_at,
+    })
+  }
 
   async delete(id: string): Promise<Transaction> {
     const transaction = await this.prismaClient.transaction.delete({
