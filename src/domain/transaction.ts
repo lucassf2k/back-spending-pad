@@ -43,7 +43,7 @@ export class Transaction {
     throw new ApiError('transaction type invalid', StatusCode.BAD_REQUEST)
   }
 
-  static typeFromBooleanToString(input: boolean): string {
+  static typeFromBooleanToString(input: boolean): TransactionTypes {
     if (input) return TransactionTypes.INCOME
     return TransactionTypes.EXPENSE
   }
