@@ -1,11 +1,20 @@
 import { User } from '../../domain/user'
 import { IUserRepository } from '../repositories/iuser-repository'
-import { GetUserDTO } from '../../infrastructure/dtos/get-user-dto'
+import { GetUserOfIdDTO } from '../../infrastructure/dtos/get-user-dto'
 
 export class GetUserOfId {
   constructor(private readonly userRepository: IUserRepository) {}
 
-  async execute(input: GetUserDTO): Promise<User> {
-    return this.userRepository.get(input.id)
+  async execute(input: GetUserOfIdDTO) {
+    const user = await this.userRepository.get(input.id)
+    if (!user) return undefined
+    return GetUserOfId.output(user)
+  }
+
+  static output(input: User) {
+    return {
+      id: input._id,
+      email: input.props.email,
+    }
   }
 }

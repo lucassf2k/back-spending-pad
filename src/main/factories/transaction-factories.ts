@@ -6,11 +6,16 @@ import { ListTransactionController } from '../../infrastructure/express/controll
 import { ListTransaction } from '../../application/use-case/list-transaction'
 import { GetTransactionController } from '../../infrastructure/express/controllers/get-transaction-controller'
 import { GetTransaction } from '../../application/use-case/get-transaction'
+import { PrismaUserRepository } from '../../infrastructure/repositories/prisma/prisma-user-repository'
 
 const transactionRepository = new PrismaTransactionRepository()
 
 export function createTransactionControllerFactory(): IController {
-  const createTransaction = new CreateTransaction(transactionRepository)
+  const userRepository = new PrismaUserRepository()
+  const createTransaction = new CreateTransaction(
+    transactionRepository,
+    userRepository,
+  )
   return new CreateTransactionController(createTransaction)
 }
 

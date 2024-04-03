@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
-export const GetUserValidation = z.object({
+export const GetUserOfIdValidation = z.object({
   id: z.string({ required_error: 'ID é obrigatório' }).uuid('UUID inválido'),
 })
 
-export type GetUserDTO = z.infer<typeof GetUserValidation>
+export type GetUserOfIdDTO = z.infer<typeof GetUserOfIdValidation>

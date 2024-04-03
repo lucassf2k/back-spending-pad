@@ -45,4 +45,20 @@ export class PrismaUserRepository implements IUserRepository {
       transactions: [],
     })
   }
+
+  async getOfEmail(email: string): Promise<User> {
+    const user = await this.prismaClient.user.findUnique({
+      where: { email },
+    })
+    if (!user) return undefined
+    return User.restore(user.id, {
+      email: new Email(user.email),
+      name: user.name,
+      password: makePassword(user.password_algotithm).restore(
+        user.password_value,
+        user.passowrd_salt,
+      ),
+      transactions: [],
+    })
+  }
 }
