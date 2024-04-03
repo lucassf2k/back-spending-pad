@@ -41,6 +41,8 @@ type Body = {
 }
 ```
 
+\*\*OBS.: TRUE são valores de entrada, FALSE são valores de saída
+
 ### Obter transação pelo ID
 
 **Endpoint:** `GET /api/transactions/:id`
