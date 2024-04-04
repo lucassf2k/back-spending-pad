@@ -20,7 +20,7 @@ export function authenticationMiddleware(
     const { authorization } = request.headers
     const input = AuthorizationValidation.parse(authorization)
     const [_, token] = input.split(' ')
-    const payload: JwTPayload = JwtService.verify(token, 'asdaddjajndjanda')
+    const payload = JwtService.verify(token, 'asdaddjajndjanda') as JwTPayload
     if (!payload.id) {
       throw new ApiError('Usuário sem permisão', StatusCode.UNAUTHORIZED)
     }

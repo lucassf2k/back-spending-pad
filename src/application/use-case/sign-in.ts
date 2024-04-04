@@ -26,11 +26,8 @@ export class SignIn {
       id: user._id,
       email: user.props.email.value,
     }
-    const token = JwtService.generate(
-      { user: userPayload },
-      'asdaddjajndjanda',
-      day,
-    )
+    const secretKey = process.env.JWT_SECRET || 'aasdajnabdbaudba'
+    const token = JwtService.sign({ user: userPayload }, secretKey, day)
     return { token }
   }
 }

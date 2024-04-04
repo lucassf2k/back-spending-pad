@@ -6,11 +6,16 @@ import {
   listTransactionControllerFactory,
   updateTransactionControllerFactory,
 } from '../../../main/factories/transaction-factories'
+import { authenticationMiddleware } from '../middlewares/authentication-middleware'
 
 const transactionRoutes = Router()
-transactionRoutes.post('/', (request: Request, response: Response) => {
-  createTransactionControllerFactory().handle(request, response)
-})
+transactionRoutes.post(
+  '/',
+  authenticationMiddleware,
+  (request: Request, response: Response) => {
+    createTransactionControllerFactory().handle(request, response)
+  },
+)
 transactionRoutes.get(
   '/list/:userId',
   (request: Request, response: Response) => {
