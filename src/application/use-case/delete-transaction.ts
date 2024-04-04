@@ -11,7 +11,7 @@ export class DeleteTransaction {
       input.id,
     )
     if (!transactionAlreadyExistis) {
-      throw new ApiError('transação não encontrada', StatusCode.NOT_FOUND)
+      throw new ApiError('Transação não encontrada', StatusCode.NOT_FOUND)
     }
     return this.transactionRepository.delete(input.id)
   }

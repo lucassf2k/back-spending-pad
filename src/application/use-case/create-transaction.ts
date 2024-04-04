@@ -14,7 +14,7 @@ export class CreateTransaction {
   async execute(input: CreateTransactionDTO) {
     const userExists = await this.userRepository.get(input.userId)
     if (!userExists) {
-      throw new ApiError('usuário não encontrado', StatusCode.BAD_REQUEST)
+      throw new ApiError('Usuário não encontrado', StatusCode.BAD_REQUEST)
     }
     const newTransaction = Transaction.create({
       value: input.value,
