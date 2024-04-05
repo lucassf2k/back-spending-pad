@@ -20,7 +20,7 @@ Content-Type: application/json
 ### Create a Transaction
 POST http://localhost:3001/api/transactions
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiN2IzOGFiY2QtNzBjOS00NzAwLWI2YmYtYjVkOGViMDA1NDA1IiwiZW1haWwiOiJmdWxhbm9AbWFpbC5jb20ifSwiZXhwIjoxNzEyMzE5OTY1fQ.WlyLUonzZ0k50-Q0KpG03FgJg1Mi6IYx6r-RcU3oIpg
+Authorization: Bearer exemple
 
 {
   "userId": "7b38abcd-70c9-4700-b6bf-b5d8eb005405",
