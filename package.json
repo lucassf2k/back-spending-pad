@@ -5,8 +5,8 @@
   "main": "build/main.js",
   "scripts": {
     "build": "tsc",
-    "start": "node ./build/main.js",
-    "start:dev": "nodemon --watch --env-file .env 'src/' --exec 'ts-node --files src/main.ts'",
+    "start": "node --env-file .env ./build/main.js",
+    "start:dev": "nodemon --watch 'src/' --env-file .env --exec 'ts-node --files src/main.ts'",
     "lint:eslint": "npx eslint 'src/**/*.ts' --fix",
     "lint:prettier": "npx prettier --write 'src/**/*.ts'"
   },
