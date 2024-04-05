@@ -5,10 +5,15 @@ import { AuthorizationValidation } from './validations'
 import { JwtService } from '../../services/JwtService'
 import { errorHandler } from './error-handler'
 import { ApiError } from '../../../common/api-error'
+import { ENV } from '../../configurations/environments'
 
 type JwTPayload = {
-  id: string
-  email: string
+  user: {
+    id: string
+    email: string
+  }
+  iat: number
+  exp: number
 }
 
 export function authenticationMiddleware(
@@ -20,11 +25,11 @@ export function authenticationMiddleware(
     const { authorization } = request.headers
     const input = AuthorizationValidation.parse(authorization)
     const [_, token] = input.split(' ')
-    const payload = JwtService.verify(token, 'asdaddjajndjanda') as JwTPayload
-    if (!payload.id) {
+    const payload = JwtService.verify(token, ENV.JWT_SECRET_KEY) as JwTPayload
+    if (!payload.user.id) {
       throw new ApiError('Usuário sem permisão', StatusCode.UNAUTHORIZED)
     }
-    request.user = payload
+    request.user = payload.user
     return next()
   } catch (error) {
     errorHandler(error, request, response)

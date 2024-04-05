@@ -11,7 +11,7 @@ export class SignInController implements IController {
     try {
       const input = SignInValidation.parse(request.body)
       const { token } = await this.signIn.execute(input)
-      return response.json(token)
+      return response.json({ token })
     } catch (error) {
       errorHandler(error, request, response)
     }

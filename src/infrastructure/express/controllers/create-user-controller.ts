@@ -11,8 +11,8 @@ export class CreateUserController implements IController {
     try {
       const input = CreateUserValidation.parse(request.body)
       const user = await this.createUser.execute(input)
-      const url = `${request.url}/${user._id}`
-      return response.location(url).send()
+      const url = `${request.baseUrl}/${user._id}`
+      return response.location(url).send({ id: user._id })
     } catch (error) {
       errorHandler(error, request, response)
     }

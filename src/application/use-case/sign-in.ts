@@ -1,5 +1,6 @@
 import { ApiError } from '../../common/api-error'
 import { StatusCode } from '../../common/status-code'
+import { ENV } from '../../infrastructure/configurations/environments'
 import { SignInDTO } from '../../infrastructure/dtos/sign-in-dto'
 import { JwtService } from '../../infrastructure/services/JwtService'
 import { IUserRepository } from '../repositories/iuser-repository'
@@ -26,8 +27,11 @@ export class SignIn {
       id: user._id,
       email: user.props.email.value,
     }
-    const secretKey = process.env.JWT_SECRET || 'aasdajnabdbaudba'
-    const token = JwtService.sign({ user: userPayload }, secretKey, day)
+    const token = JwtService.sign(
+      { user: userPayload },
+      ENV.JWT_SECRET_KEY,
+      day,
+    )
     return { token }
   }
 }
