@@ -17,18 +17,31 @@ transactionRoutes.post(
   },
 )
 transactionRoutes.get(
-  '/list/:userId',
+  '/',
+  authenticationMiddleware,
   (request: Request, response: Response) => {
     listTransactionControllerFactory().handle(request, response)
   },
 )
-transactionRoutes.get('/:id', (request: Request, response: Response) => {
-  getTransactionControllerFactory().handle(request, response)
-})
-transactionRoutes.delete('/:id', (request: Request, response: Response) => {
-  deleteTransactionControllerFactory().handle(request, response)
-})
-transactionRoutes.put('/:id', (request: Request, response: Response) => {
-  updateTransactionControllerFactory().handle(request, response)
-})
+transactionRoutes.get(
+  '/:id',
+  authenticationMiddleware,
+  (request: Request, response: Response) => {
+    getTransactionControllerFactory().handle(request, response)
+  },
+)
+transactionRoutes.delete(
+  '/:id',
+  authenticationMiddleware,
+  (request: Request, response: Response) => {
+    deleteTransactionControllerFactory().handle(request, response)
+  },
+)
+transactionRoutes.put(
+  '/:id',
+  authenticationMiddleware,
+  (request: Request, response: Response) => {
+    updateTransactionControllerFactory().handle(request, response)
+  },
+)
 export { transactionRoutes }

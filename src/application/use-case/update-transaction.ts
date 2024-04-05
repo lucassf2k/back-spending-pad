@@ -33,7 +33,7 @@ export class UpdateTransaction {
       id: input._id,
       title: input.props.title,
       value: input.props.value,
-      type: input.props.type,
+      type: Transaction.typeFromStringToBoolean(input.props.type),
       created_at: input.props.createdAt,
       updated_at: input.props.updatedAt,
     }

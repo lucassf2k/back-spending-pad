@@ -1,12 +1,6 @@
 import { z } from 'zod'
 
 export const CreateTransactionValidation = z.object({
-  userId: z
-    .string({
-      required_error: 'ID do usuário é obrigatório',
-      invalid_type_error: 'Espera-se uma string',
-    })
-    .uuid('UUID inválido'),
   title: z
     .string({
       required_error: 'Titulo é obrigatótio',
@@ -23,4 +17,9 @@ export const CreateTransactionValidation = z.object({
   }),
 })
 
-export type CreateTransactionDTO = z.infer<typeof CreateTransactionValidation>
+export type CreateTransactionDTO = {
+  userId: string
+  title?: string
+  value?: number
+  type?: boolean
+}

@@ -10,8 +10,11 @@ export class CreateTransactionController implements IController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     try {
-      const input = CreateTransactionValidation.parse(request.body)
-      console.log(request.user)
+      const validRequest = CreateTransactionValidation.parse(request.body)
+      const input = {
+        userId: request.user.id,
+        ...validRequest,
+      }
       const output = await this.createTransaction.execute(input)
       if (!output) throw new Error('Erro ao inserir no banco de dados')
       return response.status(StatusCode.CREATED).json({ id: output._id })

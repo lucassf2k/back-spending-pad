@@ -20,10 +20,9 @@ Content-Type: application/json
 ### Create a Transaction
 POST http://localhost:3001/api/transactions
 Content-Type: application/json
-Authorization: Bearer exemple
+Authorization: Bearer token
 
 {
-  "userId": "7b38abcd-70c9-4700-b6bf-b5d8eb005405",
   "title": "Gasto no mercado do mês",
   "value": 589.50,
   "type": false
@@ -33,15 +32,17 @@ Authorization: Bearer exemple
 GET http://localhost:3001/api/transactions/:id
 
 ### Get All User Transaction of id
-GET http://localhost:3001/api/transactions/list/:userId
+GET http://localhost:3001/api/transactions/
+Authorization: Bearer token
 
 ### Delete Transaction of id
 DELETE http://localhost:3001/api/transactions/:id
-
+Authorization: Bearer token
 ### Update Transaction of id
-PUT http://localhost:3001/api/transactions/:id
+PUT http://localhost:3001/api/transactions/31f9e220-be69-41c5-a7ce-a7d287310634
 Content-Type: application/json
+Authorization: Bearer token
 
 {
-  "value": 45
+  "type": true
 }

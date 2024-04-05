@@ -9,7 +9,7 @@ export class ListTransactionController implements IController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     try {
-      const input = ListTransactionValidation.parse(request.params)
+      const input = ListTransactionValidation.parse(request.user.id)
       const output = await this.listTransaction.execute(input)
       return response.json(output)
     } catch (error) {

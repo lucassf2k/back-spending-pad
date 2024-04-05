@@ -11,11 +11,12 @@ export function errorHandler(
   next?: NextFunction,
 ) {
   if (error instanceof ApiError) {
-    return response.status(error.code).send(error.message)
+    return response.status(error.code).json({ error: error.message })
   }
   if (error instanceof ZodError) {
-    const zodErrors = error.errors.map((err) => err.message)
-    return response.status(StatusCode.BAD_REQUEST).send(zodErrors)
+    return response
+      .status(StatusCode.BAD_REQUEST)
+      .json({ error: error.message })
   }
   console.log(error)
   return response
