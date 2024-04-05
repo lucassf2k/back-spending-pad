@@ -1,5 +1,23 @@
 # Spending Pad
 
+## RUN
+
+```zsh
+
+npm install
+docker compose up -d
+npm run prisma:migrate
+npm run start:dev
+
+# OR
+
+npm install -g pnpm
+docker compose up -d
+pnpm prisma:migrate
+pnpm start:dev
+
+```
+
 ## Rotas
 
 ### Criação de usuários
