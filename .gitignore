@@ -5,3 +5,4 @@ coverage
 .vscode
 .env
 comics
+pnpm-lock.yaml
