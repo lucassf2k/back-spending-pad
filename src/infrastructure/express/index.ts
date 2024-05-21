@@ -15,7 +15,7 @@ export function ExpressApplication() {
   app.use(errorHandler)
   app.listen(ENV.APP_PORT, () =>
     console.log(
-      `HTTP server is running on PORT ${ENV.APP_PORT}! (http://localhost:3001/api/docs)`,
+      `HTTP server is running on PORT ${ENV.APP_PORT}! (http://localhost:${ENV.APP_PORT}/api/docs)`,
     ),
   )
 }
