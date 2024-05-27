@@ -2,10 +2,10 @@
   "name": "back-spending-pad",
   "version": "1.0.0",
   "description": "",
-  "main": "build/main.js",
+  "main": "dist/main.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node --env-file .env ./build/main.js",
+    "build": "tsup src",
+    "start": "node --env-file .env ./dist/main.js",
     "start:dev": "nodemon --watch 'src/' --env-file .env --exec 'ts-node --files src/main.ts'",
     "lint:eslint": "npx eslint 'src/**/*.ts' --fix",
     "lint:prettier": "npx prettier --write 'src/**/*.ts'",
