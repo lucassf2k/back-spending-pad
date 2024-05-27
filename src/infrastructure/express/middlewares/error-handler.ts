@@ -14,9 +14,10 @@ export function errorHandler(
     return response.status(error.code).json({ error: error.message })
   }
   if (error instanceof ZodError) {
+    const errors = error.errors.map((err) => err.message)
     return response
       .status(StatusCode.BAD_REQUEST)
-      .json({ error: error.message })
+      .json({ validationErrors: errors })
   }
   console.log(error)
   return response
