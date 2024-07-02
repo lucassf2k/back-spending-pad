@@ -1,15 +1,15 @@
-import { PrismaClient } from '@prisma/client'
-import { User } from '../../../domain/user'
-import { Email } from '../../../domain/email'
-import { makePassword } from '../../../main/factories/password-factory'
-import { IUserRepository } from '../../../application/repositories/iuser-repository'
-import { PrismaClientSingleton } from './prisma-client-singleton'
+import { PrismaClient } from '@prisma/client';
+import { User } from '../../../domain/user';
+import { Email } from '../../../domain/email';
+import { makePassword } from '../../../main/factories/password-factory';
+import { IUserRepository } from '../../../application/repositories/iuser-repository';
+import { PrismaClientSingleton } from './prisma-client-singleton';
 
 export class PrismaUserRepository implements IUserRepository {
-  private readonly prismaClient: PrismaClient
+  private readonly prismaClient: PrismaClient;
 
   constructor() {
-    this.prismaClient = PrismaClientSingleton.getInstance()
+    this.prismaClient = PrismaClientSingleton.getInstance();
   }
 
   async save(user: User): Promise<boolean> {
@@ -22,9 +22,9 @@ export class PrismaUserRepository implements IUserRepository {
         password_algotithm: user.props.password.algorithm,
         password_value: user.props.password.value,
       },
-    })
-    if (!createdUser.id) return false
-    return true
+    });
+    if (!createdUser.id) return false;
+    return true;
   }
 
   // async update(id: string, updatedUser: User): Promise<boolean> {
@@ -38,8 +38,8 @@ export class PrismaUserRepository implements IUserRepository {
   async get(id: string): Promise<User> {
     const user = await this.prismaClient.user.findUnique({
       where: { id: id },
-    })
-    if (!user) return undefined
+    });
+    if (!user) return undefined;
     return User.restore(user.id, {
       email: new Email(user.email),
       name: user.name,
@@ -50,14 +50,14 @@ export class PrismaUserRepository implements IUserRepository {
       transactions: [],
       createAt: user.created_at,
       updatedAt: user.updated_at,
-    })
+    });
   }
 
   async getOfEmail(email: string): Promise<User> {
     const user = await this.prismaClient.user.findUnique({
       where: { email },
-    })
-    if (!user) return undefined
+    });
+    if (!user) return undefined;
     return User.restore(user.id, {
       email: new Email(user.email),
       name: user.name,
@@ -68,6 +68,6 @@ export class PrismaUserRepository implements IUserRepository {
       transactions: [],
       createAt: user.created_at,
       updatedAt: user.updated_at,
-    })
+    });
   }
 }

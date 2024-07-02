@@ -1,11 +1,11 @@
-import { StatusCode } from './status-code'
+import { StatusCode } from './status-code';
 
 export class ApiError extends Error {
-  readonly code: StatusCode
+  readonly code: StatusCode;
 
   constructor(message: string, statusCode: StatusCode) {
-    super()
-    this.message = message
-    this.code = statusCode
+    super();
+    this.message = message;
+    this.code = statusCode;
   }
 }

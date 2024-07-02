@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import JWT from 'jsonwebtoken'
+import JWT from 'jsonwebtoken';
 
 export type UserPayload = {
-  id: string
-  email: string
-}
+  id: string;
+  email: string;
+};
 
 export class JwtService {
   private constructor() {}
@@ -14,10 +14,10 @@ export class JwtService {
     secret: string,
     expiresIn: number | string,
   ) {
-    return JWT.sign(payload, secret, { expiresIn })
+    return JWT.sign(payload, secret, { expiresIn });
   }
 
   static verify(token: string, secret: string) {
-    return JWT.verify(token, secret)
+    return JWT.verify(token, secret);
   }
 }

@@ -1,4 +1,4 @@
-import z from 'zod'
+import z from 'zod';
 
 export const SignInValidation = z.object({
   email: z
@@ -13,6 +13,6 @@ export const SignInValidation = z.object({
       invalid_type_error: 'Espera-se uma string',
     })
     .min(8, 'Senha precisa ter no mínimo 8 caracteres'),
-})
+});
 
-export type SignInDTO = z.infer<typeof SignInValidation>
+export type SignInDTO = z.infer<typeof SignInValidation>;

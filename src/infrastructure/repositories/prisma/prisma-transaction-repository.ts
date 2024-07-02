@@ -1,13 +1,13 @@
-import { PrismaClient } from '@prisma/client'
-import { Transaction } from '../../../domain/transaction'
-import { PrismaClientSingleton } from './prisma-client-singleton'
-import { ITransactionRepository } from '../../../application/repositories/itransaction-repository'
+import { PrismaClient } from '@prisma/client';
+import { Transaction } from '../../../domain/transaction';
+import { PrismaClientSingleton } from './prisma-client-singleton';
+import { ITransactionRepository } from '../../../application/repositories/itransaction-repository';
 
 export class PrismaTransactionRepository implements ITransactionRepository {
-  private readonly prismaClient: PrismaClient
+  private readonly prismaClient: PrismaClient;
 
   constructor() {
-    this.prismaClient = PrismaClientSingleton.getInstance()
+    this.prismaClient = PrismaClientSingleton.getInstance();
   }
 
   async save(userId: string, input: Transaction): Promise<Transaction> {
@@ -19,15 +19,15 @@ export class PrismaTransactionRepository implements ITransactionRepository {
         value: input.props.value,
         user_id: userId,
       },
-    })
-    if (!createdTransaction) return undefined
+    });
+    if (!createdTransaction) return undefined;
     return Transaction.restore(createdTransaction.id, {
       title: createdTransaction.title,
       type: Transaction.getType(createdTransaction.type),
       value: createdTransaction.value,
       createdAt: createdTransaction.created_at,
       updatedAt: createdTransaction.updated_at,
-    })
+    });
   }
 
   async update(updatedTransaction: Transaction): Promise<Transaction> {
@@ -38,51 +38,51 @@ export class PrismaTransactionRepository implements ITransactionRepository {
         value: updatedTransaction.props.value,
         type: updatedTransaction.props.type,
       },
-    })
-    if (!transaction) return undefined
+    });
+    if (!transaction) return undefined;
     return Transaction.restore(transaction.id, {
       title: transaction.title,
       type: Transaction.getType(transaction.type),
       value: transaction.value,
       createdAt: transaction.created_at,
       updatedAt: transaction.updated_at,
-    })
+    });
   }
 
   async delete(id: string): Promise<Transaction> {
     const transaction = await this.prismaClient.transaction.delete({
       where: { id },
-    })
-    if (!transaction) return undefined
+    });
+    if (!transaction) return undefined;
     return Transaction.restore(transaction.id, {
       title: transaction.title,
       type: Transaction.getType(transaction.type),
       value: transaction.value,
       createdAt: transaction.created_at,
       updatedAt: transaction.updated_at,
-    })
+    });
   }
 
   async get(id: string): Promise<Transaction> {
     const transaction = await this.prismaClient.transaction.findFirst({
       where: { id },
-    })
-    if (!transaction) return undefined
+    });
+    if (!transaction) return undefined;
     return Transaction.restore(transaction.id, {
       title: transaction.title,
       type: Transaction.getType(transaction.type),
       value: transaction.value,
       createdAt: transaction.created_at,
       updatedAt: transaction.updated_at,
-    })
+    });
   }
 
   async getAll(userId: string): Promise<Transaction[]> {
     const transactions = await this.prismaClient.transaction.findMany({
       where: { user_id: userId },
-    })
-    if (transactions.length === 0) return []
-    const output: Transaction[] = []
+    });
+    if (transactions.length === 0) return [];
+    const output: Transaction[] = [];
     for (const transaction of transactions) {
       output.push(
         Transaction.restore(transaction.id, {
@@ -92,8 +92,8 @@ export class PrismaTransactionRepository implements ITransactionRepository {
           createdAt: transaction.created_at,
           updatedAt: transaction.updated_at,
         }),
-      )
+      );
     }
-    return output
+    return output;
   }
 }

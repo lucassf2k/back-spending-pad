@@ -185,4 +185,4 @@ export const SwaggerDocument = {
       scheme: 'bearer',
     },
   },
-}
+};

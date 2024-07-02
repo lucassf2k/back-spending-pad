@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 export const CreateTransactionValidation = z.object({
   title: z
@@ -15,11 +15,11 @@ export const CreateTransactionValidation = z.object({
     required_error: 'Tipo de transacação é obrigatório',
     invalid_type_error: 'Espera-se um boolean',
   }),
-})
+});
 
 export type CreateTransactionDTO = {
-  userId: string
-  title?: string
-  value?: number
-  type?: boolean
-}
+  userId: string;
+  title?: string;
+  value?: number;
+  type?: boolean;
+};

@@ -1,9 +1,9 @@
-import { ApiError } from '../../common/api-error'
-import { StatusCode } from '../../common/status-code'
-import { Transaction } from '../../domain/transaction'
-import { CreateTransactionDTO } from '../../infrastructure/dtos/create-transaction-dto'
-import { ITransactionRepository } from '../repositories/itransaction-repository'
-import { IUserRepository } from '../repositories/iuser-repository'
+import { ApiError } from '../../common/api-error';
+import { StatusCode } from '../../common/status-code';
+import { Transaction } from '../../domain/transaction';
+import { CreateTransactionDTO } from '../../infrastructure/dtos/create-transaction-dto';
+import { ITransactionRepository } from '../repositories/itransaction-repository';
+import { IUserRepository } from '../repositories/iuser-repository';
 
 export class CreateTransaction {
   constructor(
@@ -12,15 +12,15 @@ export class CreateTransaction {
   ) {}
 
   async execute(input: CreateTransactionDTO) {
-    const userExists = await this.userRepository.get(input.userId)
+    const userExists = await this.userRepository.get(input.userId);
     if (!userExists) {
-      throw new ApiError('Usuário não encontrado', StatusCode.BAD_REQUEST)
+      throw new ApiError('Usuário não encontrado', StatusCode.BAD_REQUEST);
     }
     const newTransaction = Transaction.create({
       value: input.value,
       title: input.title,
       type: Transaction.typeFromBooleanToString(input.type),
-    })
-    return this.transactionRepository.save(input.userId, newTransaction)
+    });
+    return this.transactionRepository.save(input.userId, newTransaction);
   }
 }

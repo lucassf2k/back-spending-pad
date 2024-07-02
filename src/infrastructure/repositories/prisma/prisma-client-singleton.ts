@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
 export class PrismaClientSingleton {
-  private static instance: PrismaClient
+  private static instance: PrismaClient;
 
   private constructor() {}
 
   static getInstance() {
     if (!PrismaClientSingleton.instance) {
-      PrismaClientSingleton.instance = new PrismaClient()
+      PrismaClientSingleton.instance = new PrismaClient();
     }
-    return PrismaClientSingleton.instance
+    return PrismaClientSingleton.instance;
   }
 }

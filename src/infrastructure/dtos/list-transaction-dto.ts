@@ -1,7 +1,7 @@
-import z from 'zod'
+import z from 'zod';
 
 export const ListTransactionValidation = z
   .string({ required_error: 'ID do usuário é obrigatório' })
-  .uuid('UUID inválido')
+  .uuid('UUID inválido');
 
-export type ListTransactionDTO = z.infer<typeof ListTransactionValidation>
+export type ListTransactionDTO = z.infer<typeof ListTransactionValidation>;

@@ -1,2 +1,2 @@
-import { ExpressApplication } from './infrastructure/express'
-ExpressApplication()
+import { ExpressApplication } from './infrastructure/express';
+ExpressApplication();

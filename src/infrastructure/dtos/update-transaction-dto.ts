@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 export const UpdateTransactionValidation = z.object({
   params: z.object({
@@ -9,6 +9,6 @@ export const UpdateTransactionValidation = z.object({
     value: z.number().optional(),
     type: z.boolean().optional(),
   }),
-})
+});
 
-export type UpdateTransactionDTO = z.infer<typeof UpdateTransactionValidation>
+export type UpdateTransactionDTO = z.infer<typeof UpdateTransactionValidation>;

@@ -1,8 +1,8 @@
-import { ApiError } from '../../common/api-error'
-import { StatusCode } from '../../common/status-code'
-import { Transaction } from '../../domain/transaction'
-import { ITransactionRepository } from '../repositories/itransaction-repository'
-import { UpdateTransactionDTO } from '../../infrastructure/dtos/update-transaction-dto'
+import { ApiError } from '../../common/api-error';
+import { StatusCode } from '../../common/status-code';
+import { Transaction } from '../../domain/transaction';
+import { ITransactionRepository } from '../repositories/itransaction-repository';
+import { UpdateTransactionDTO } from '../../infrastructure/dtos/update-transaction-dto';
 
 export class UpdateTransaction {
   constructor(private readonly transactionRepository: ITransactionRepository) {}
@@ -10,9 +10,9 @@ export class UpdateTransaction {
   async execute(input: UpdateTransactionDTO) {
     const transactionAlreadyExists = await this.transactionRepository.get(
       input.params.id,
-    )
+    );
     if (!transactionAlreadyExists) {
-      throw new ApiError('Transação não encontrada', StatusCode.NOT_FOUND)
+      throw new ApiError('Transação não encontrada', StatusCode.NOT_FOUND);
     }
     const updatedTransaction = Transaction.restore(
       transactionAlreadyExists._id,
@@ -23,9 +23,9 @@ export class UpdateTransaction {
           Transaction.typeFromBooleanToString(input.body.type) ||
           transactionAlreadyExists.props.type,
       },
-    )
-    const output = await this.transactionRepository.update(updatedTransaction)
-    return UpdateTransaction.output(output)
+    );
+    const output = await this.transactionRepository.update(updatedTransaction);
+    return UpdateTransaction.output(output);
   }
 
   static output(input: Transaction) {
@@ -36,6 +36,6 @@ export class UpdateTransaction {
       type: Transaction.typeFromStringToBoolean(input.props.type),
       created_at: input.props.createdAt,
       updated_at: input.props.updatedAt,
-    }
+    };
   }
 }
