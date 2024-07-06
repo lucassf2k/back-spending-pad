@@ -22,4 +22,6 @@ function runWorkerProcess() {
   ExpressApplication();
 }
 
-Cluster.isPrimary ? runPrimaryProcess() : runWorkerProcess();
+const main = () => Cluster.isPrimary ? runPrimaryProcess() : runWorkerProcess();
+
+main();
