@@ -2,7 +2,7 @@ import { availableParallelism } from 'node:os';
 import Cluster from 'node:cluster';
 import { ExpressApplication } from './infrastructure/express';
 
-const cpuAvailableCount = availableParallelism() - 1;
+const cpuAvailableCount = 2;
 
 function runPrimaryProcess() {
   console.log(`Numbers of CPUs is ${cpuAvailableCount}`);
@@ -22,6 +22,7 @@ function runWorkerProcess() {
   ExpressApplication();
 }
 
-const main = () => Cluster.isPrimary ? runPrimaryProcess() : runWorkerProcess();
+const main = () =>
+  Cluster.isPrimary ? runPrimaryProcess() : runWorkerProcess();
 
 main();
