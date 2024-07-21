@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2023"],
+    "lib": [
+      "ES2023"
+    ],
     "module": "Node16",
-    "outDir": "build",
+    "outDir": "dist",
     "sourceMap": true,
     "rootDir": "src",
     "esModuleInterop": true,
     "removeComments": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

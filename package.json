@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsup src",
+    "build": "tsc",
     "start": "node ./dist/main.js",
     "start:cluster": "node ./dist/main-cluster.js",
     "start:dev": "nodemon --watch 'src/' --env-file .env --exec 'ts-node --files src/main.ts'",
