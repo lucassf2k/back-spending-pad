@@ -167,7 +167,7 @@ export const SwaggerDocument = {
         },
       },
     },
-    '/api/transactions/': {
+    '/api/transactions?page=1': {
       get: {
         summary: 'Obter todas as transações do usuário',
         security: [{ BearerAuth: [] }],
