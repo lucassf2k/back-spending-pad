@@ -5,5 +5,5 @@ export interface ITransactionRepository {
   update(updatedTransaction: Transaction): Promise<Transaction | undefined>;
   delete(id: string): Promise<Transaction | undefined>;
   get(id: string): Promise<Transaction | undefined>;
-  getAll(userId: string): Promise<Transaction[]>;
+  getAll(userId: string, skip: number, take: number): Promise<Transaction[]>;
 }

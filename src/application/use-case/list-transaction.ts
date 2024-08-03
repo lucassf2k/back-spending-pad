@@ -6,7 +6,12 @@ export class ListTransaction {
   constructor(private readonly transactionRepository: ITransactionRepository) {}
 
   async execute(input: ListTransactionDTO) {
-    const transactions = await this.transactionRepository.getAll(input);
+    const skip = (input.page - 1) * input.pageSize;
+    const transactions = await this.transactionRepository.getAll(
+      input.userId,
+      skip,
+      input.pageSize,
+    );
     return ListTransaction.output(transactions);
   }
 

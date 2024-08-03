@@ -1,13 +1,13 @@
 import { PrismaClient } from '@prisma/client';
 import { Transaction } from '../../../domain/transaction';
-import { PrismaClientSingleton } from './prisma-client-singleton';
+import { prismaClient } from '.';
 import { ITransactionRepository } from '../../../application/repositories/itransaction-repository';
 
 export class PrismaTransactionRepository implements ITransactionRepository {
   private readonly prismaClient: PrismaClient;
 
   constructor() {
-    this.prismaClient = PrismaClientSingleton.getInstance();
+    this.prismaClient = prismaClient;
   }
 
   async save(userId: string, input: Transaction): Promise<Transaction> {
@@ -77,8 +77,14 @@ export class PrismaTransactionRepository implements ITransactionRepository {
     });
   }
 
-  async getAll(userId: string): Promise<Transaction[]> {
+  async getAll(
+    userId: string,
+    skip: number,
+    take: number,
+  ): Promise<Transaction[]> {
     const transactions = await this.prismaClient.transaction.findMany({
+      skip,
+      take,
       where: { user_id: userId },
     });
     if (transactions.length === 0) return [];
