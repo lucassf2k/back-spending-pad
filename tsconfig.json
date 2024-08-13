@@ -8,8 +8,15 @@
     "outDir": "dist",
     "sourceMap": true,
     "rootDir": "src",
+    "baseUrl": "src",
+    "paths": {
+      "@/*": [
+        "*"
+      ]
+    },
     "esModuleInterop": true,
-    "removeComments": true
+    "removeComments": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "src"
