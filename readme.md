@@ -1,9 +1,28 @@
 # Spending Pad
 
+An application to organize and optimize your finances.
+
+## TECHS
+- NodeJS
+- PostgreSQL
+- TypeScript
+- Jest
+- Docker
+- Swagger
+- JWT
+
+## USE CASES
+- Create Transaction
+- Sign Up
+- Sign In
+- Delete Transaction
+- Get Transaction by ID
+- List Transactions
+- Update Transaction
+
 ## RUN
 
 ```zsh
-
 npm install
 docker compose up -d
 npm run prisma:migrate
@@ -15,16 +34,15 @@ npm install -g pnpm
 docker compose up -d
 pnpm prisma:migrate
 pnpm start:dev
-
 ```
 
-## Rotas
+## Routes
 
-### Criação de usuários
+### Create User
 
 **Endpoint:** `POST /api/users`
 
-### Parâmetros da requisição
+### Request Parameters
 
 ```typescript
 type Body = {
@@ -34,21 +52,21 @@ type Body = {
 }
 ```
 
-### Obter usuário pelo ID
+### Get User by ID
 
 **Endpoint:** `GET /api/users/:id`
 
-### Parâmetros da Requisição
+### Request Parameters
 
 ```typescript
 type id = uuid
 ```
 
-### Criação de transações
+### Create Transaction
 
 **Endpoint:** `POST /api/transactions`
 
-### Parâmetros da requisição
+### Request Parameters
 
 ```typescript
 type Body = {
@@ -59,13 +77,13 @@ type Body = {
 }
 ```
 
-\*\*OBS.: TRUE são valores de entrada, FALSE são valores de saída
+**Note:** `TRUE` represents income values, `FALSE` represents expense values.
 
-### Obter transação pelo ID
+### Get Transaction by ID
 
 **Endpoint:** `GET /api/transactions/:id`
 
-### Parâmetros da requisição
+### Request Parameters
 
 ```typescript
 type Params = {
@@ -73,31 +91,31 @@ type Params = {
 }
 ```
 
-### Listar transações de um usuário pelo id do usuário
+### List Transactions by User ID
 
-**\*Endpoint:** `GET /api/transactions/list/:userId`
+**Endpoint:** `GET /api/transactions/list/:userId`
 
-### Parâmetros da requisíção
+### Request Parameters
 
 ```typescript
 type userId = uuid
 ```
 
-### Deletar transação pelo id
+### Delete Transaction by ID
 
 **Endpoint:** `DELETE /api/transactions/:id`
 
-### Parâmetros da requisição
+### Request Parameters
 
 ```typescript
 type id = uuid
 ```
 
-### Atualizar transação pelo id
+### Update Transaction by ID
 
 **Endpoint:** `PUT /api/transactions/:id`
 
-### Parâmetros da requisição
+### Request Parameters
 
 ```typescript
 type id = uuid
@@ -108,3 +126,7 @@ type Body = {
   type?: boolean
 }
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
