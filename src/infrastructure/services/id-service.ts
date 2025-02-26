@@ -1,9 +1,9 @@
-import { randomUUID } from 'node:crypto';
+import { v7 as uuidV7 } from 'uuid';
 
 export class IdService {
   private constructor() {}
 
   static UUID(): string {
-    return randomUUID();
+    return uuidV7();
   }
 }
