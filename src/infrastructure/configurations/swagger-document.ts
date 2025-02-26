@@ -1,20 +1,20 @@
 export const SwaggerDocument = {
   openapi: '3.0.0',
   info: {
-    title: 'Sistema de Gerenciamento Financeiro API',
-    description: 'API para gerenciamento de usuários e transações financeiras',
+    title: 'Financial Management System API',
+    description: 'API for user and financial transaction management',
     version: '1.0.0',
   },
   servers: [
     {
       url: 'http://localhost:3001/',
-      description: 'Servidor de desenvolvimento',
+      description: 'Development server',
     },
   ],
   paths: {
     '/api/users': {
       post: {
-        summary: 'Criar um novo usuário',
+        summary: 'Create a new user',
         requestBody: {
           required: true,
           content: {
@@ -32,14 +32,14 @@ export const SwaggerDocument = {
         },
         responses: {
           '200': {
-            description: 'Usuário criado com sucesso',
+            description: 'User successfully created',
           },
         },
       },
     },
     '/api/users/sign-in': {
       post: {
-        summary: 'Entrar na conta do usuário',
+        summary: 'Sign in to the user account',
         requestBody: {
           required: true,
           content: {
@@ -56,14 +56,14 @@ export const SwaggerDocument = {
         },
         responses: {
           '200': {
-            description: 'Login bem-sucedido, token de acesso retornado',
+            description: 'Successful login, access token returned',
           },
         },
       },
     },
     '/api/transactions': {
       post: {
-        summary: 'Criar uma nova transação',
+        summary: 'Create a new transaction',
         security: [{ BearerAuth: [] }],
         requestBody: {
           required: true,
@@ -82,14 +82,14 @@ export const SwaggerDocument = {
         },
         responses: {
           '200': {
-            description: 'Transação criada com sucesso',
+            description: 'Transaction successfully created',
           },
         },
       },
     },
     '/api/transactions/{id}': {
       delete: {
-        summary: 'Deletar uma transação específica',
+        summary: 'Delete a specific transaction',
         security: [{ BearerAuth: [] }],
         parameters: [
           {
@@ -99,17 +99,17 @@ export const SwaggerDocument = {
             schema: {
               type: 'string',
             },
-            description: 'ID da transação a ser deletada',
+            description: 'ID of the transaction to be deleted',
           },
         ],
         responses: {
           '200': {
-            description: 'Transação deletada com sucesso',
+            description: 'Transaction successfully deleted',
           },
         },
       },
       get: {
-        summary: 'Obter uma transação específica',
+        summary: 'Get a specific transaction',
         security: [{ BearerAuth: [] }],
         parameters: [
           {
@@ -119,17 +119,17 @@ export const SwaggerDocument = {
             schema: {
               type: 'string',
             },
-            description: 'ID da transação a ser obtida',
+            description: 'ID of the transaction to be retrieved',
           },
         ],
         responses: {
           '200': {
-            description: 'Transação encontrada',
+            description: 'Transaction found',
           },
         },
       },
       put: {
-        summary: 'Atualizar uma transação específica',
+        summary: 'Update a specific transaction',
         security: [{ BearerAuth: [] }],
         parameters: [
           {
@@ -139,7 +139,7 @@ export const SwaggerDocument = {
             schema: {
               type: 'string',
             },
-            description: 'ID da transação a ser atualizada',
+            description: 'ID of the transaction to be updated',
           },
         ],
         requestBody: {
@@ -162,18 +162,18 @@ export const SwaggerDocument = {
         },
         responses: {
           '200': {
-            description: 'Transação atualizada com sucesso',
+            description: 'Transaction successfully updated',
           },
         },
       },
     },
     '/api/transactions?page=1': {
       get: {
-        summary: 'Obter todas as transações do usuário',
+        summary: 'Get all user transactions',
         security: [{ BearerAuth: [] }],
         responses: {
           '200': {
-            description: 'Lista de transações do usuário',
+            description: 'List of user transactions',
           },
         },
       },
