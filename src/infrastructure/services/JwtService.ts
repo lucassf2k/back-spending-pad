@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { sign, verify } from 'jsonwebtoken';
+import JWT from 'jsonwebtoken';
+const { sign, verify } = JWT;
 
 export type UserPayload = {
   id: string;

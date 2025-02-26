@@ -6,7 +6,7 @@ import { JwtService } from '../../services/JwtService';
 import { errorHandler } from './error-handler';
 import { ApiError } from '../../../common/api-error';
 import { ENV } from '../../configurations/environments';
-import { JsonWebTokenError } from 'jsonwebtoken';
+import JWT from 'jsonwebtoken';
 
 type JwTPayload = {
   user: {
@@ -33,7 +33,7 @@ export function authenticationMiddleware(
     request.user = payload.user;
     return next();
   } catch (error) {
-    if (error instanceof JsonWebTokenError) {
+    if (error instanceof JWT.JsonWebTokenError) {
       return response
         .status(StatusCode.UNAUTHORIZED)
         .json({ error: error.message });
