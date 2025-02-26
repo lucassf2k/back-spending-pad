@@ -36,13 +36,13 @@ export class Transaction {
   static getType(input: string): TransactionTypes {
     if (input === TransactionTypes.INCOME) return TransactionTypes.INCOME;
     if (input === 'EXPENSE') return TransactionTypes.EXPENSE;
-    throw new ApiError('transaction type invalid', StatusCode.BAD_REQUEST);
+    throw new ApiError('Transaction type invalid', StatusCode.BAD_REQUEST);
   }
 
   static typeFromStringToBoolean(input: string): boolean {
     if (input === TransactionTypes.INCOME) return true;
     if (input === 'EXPENSE') return false;
-    throw new ApiError('transaction type invalid', StatusCode.BAD_REQUEST);
+    throw new ApiError('Transaction type invalid', StatusCode.BAD_REQUEST);
   }
 
   static typeFromBooleanToString(input: boolean): TransactionTypes {

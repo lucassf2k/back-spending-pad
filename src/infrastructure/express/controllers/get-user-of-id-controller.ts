@@ -14,7 +14,7 @@ export class GetUserOfIdController implements IController {
       const input = GetUserOfIdValidation.parse(request.params);
       const user = await this.getUserOfId.execute(input);
       if (!user) {
-        throw new ApiError('usuário não encontrado', StatusCode.NOT_FOUND);
+        throw new ApiError('User not found', StatusCode.NOT_FOUND);
       }
       return response.json(user);
     } catch (error) {

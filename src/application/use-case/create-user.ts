@@ -12,7 +12,7 @@ export class CreateUser {
   async execute(input: CreateUserDTO): Promise<User> {
     const userAlreadyExists = await this.userRepository.getOfEmail(input.email);
     if (userAlreadyExists) {
-      throw new ApiError('E-mail já em uso', StatusCode.CONFLICT);
+      throw new ApiError('Email already in use', StatusCode.CONFLICT);
     }
     const newUser = User.create({
       name: input.name,

@@ -16,11 +16,11 @@ export class SignIn {
   async execute(input: SignInDTO) {
     const user = await this.userRepository.getOfEmail(input.email);
     if (!user) {
-      throw new ApiError('Usuário sem permisão', StatusCode.UNAUTHORIZED);
+      throw new ApiError('Unauthorized user', StatusCode.UNAUTHORIZED);
     }
     const isValidPassword = user.props.password.validate(input.password);
     if (!isValidPassword) {
-      throw new ApiError('Senha incorreta', StatusCode.UNAUTHORIZED);
+      throw new ApiError('Wrong password', StatusCode.UNAUTHORIZED);
     }
     const day = 60 * 60 * 24;
     const userPayload: UserPayload = {

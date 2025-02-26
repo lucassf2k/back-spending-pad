@@ -12,7 +12,7 @@ export class UpdateTransaction {
       input.params.id,
     );
     if (!transactionAlreadyExists) {
-      throw new ApiError('Transação não encontrada', StatusCode.NOT_FOUND);
+      throw new ApiError('Transaction not found', StatusCode.NOT_FOUND);
     }
     const updatedTransaction = Transaction.restore(
       transactionAlreadyExists._id,

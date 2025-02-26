@@ -10,7 +10,7 @@ export class GetTransaction {
   async execute(input: GetTransactionDTO) {
     const transaction = await this.transactionRepository.get(input.id);
     if (!transaction) {
-      throw new ApiError('Transação não encontrada', StatusCode.NOT_FOUND);
+      throw new ApiError('Transaction not found', StatusCode.NOT_FOUND);
     }
     return GetTransaction.output(transaction);
   }

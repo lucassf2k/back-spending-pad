@@ -28,7 +28,7 @@ export function authenticationMiddleware(
     const [_, token] = input.split(' ');
     const payload = JwtService.verify(token, ENV.JWT_SECRET_KEY) as JwTPayload;
     if (!payload.user.id) {
-      throw new ApiError('Usuário sem permisão', StatusCode.UNAUTHORIZED);
+      throw new ApiError('Unauthorized user', StatusCode.UNAUTHORIZED);
     }
     request.user = payload.user;
     return next();
