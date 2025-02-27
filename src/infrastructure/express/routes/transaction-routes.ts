@@ -5,8 +5,8 @@ import {
   getTransactionControllerFactory,
   listTransactionControllerFactory,
   updateTransactionControllerFactory,
-} from '../../../main/factories/transaction-factories';
-import { authenticationMiddleware } from '../middlewares/authentication-middleware';
+} from '@/main/factories/transaction-factories';
+import { authenticationMiddleware } from '@/infrastructure/express/middlewares/authentication-middleware';
 
 const transactionRoutes = Router();
 transactionRoutes.post(

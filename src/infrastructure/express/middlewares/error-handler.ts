@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ZodError } from 'zod';
 import type { Request, Response, NextFunction } from 'express';
-import { ApiError } from '../../../common/api-error';
-import { StatusCode } from '../../../common/status-code';
+import { ApiError } from '@/common/api-error';
+import { StatusCode } from '@/common/status-code';
 
 export function errorHandler(
   error: Error,

@@ -1,10 +1,10 @@
-import { User } from '../../domain/user';
-import { Email } from '../../domain/email';
-import { CreateUserDTO } from '../../infrastructure/dtos/create-user-dto';
-import { PBKDF2Password } from '../../domain/pbkdf2-password';
-import { IUserRepository } from '../repositories/iuser-repository';
-import { ApiError } from '../../common/api-error';
-import { StatusCode } from '../../common/status-code';
+import { User } from '@/domain/user';
+import { Email } from '@/domain/email';
+import { CreateUserDTO } from '@/infrastructure/dtos/create-user-dto';
+import { PBKDF2Password } from '@/domain/pbkdf2-password';
+import { IUserRepository } from '@/application/repositories/iuser-repository';
+import { ApiError } from '@/common/api-error';
+import { StatusCode } from '@/common/status-code';
 
 export class CreateUser {
   constructor(private readonly userRepository: IUserRepository) {}

@@ -1,13 +1,13 @@
 import { z } from 'zod';
 
 export const CreateUserValidation = z.object({
-  name: z.string({ required_error: 'Nome é obrigatório' }).min(1),
+  name: z.string({ required_error: 'Name is required' }).min(1),
   email: z
-    .string({ required_error: 'E-mail é obrigatório' })
-    .email('E-mail inválido'),
+    .string({ required_error: 'Email is required' })
+    .email('Invalid email'),
   password: z
-    .string({ required_error: 'Senha é obrigatória' })
-    .min(8, 'Senha dever ter no mínimo 8 caracteres'),
+    .string({ required_error: 'Password is required' })
+    .min(8, 'Password must have at least 8 characters'),
 });
 
 export type CreateUserDTO = z.infer<typeof CreateUserValidation>;

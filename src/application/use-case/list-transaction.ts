@@ -1,6 +1,6 @@
-import { Transaction } from '../../domain/transaction';
-import { ListTransactionDTO } from '../../infrastructure/dtos/list-transaction-dto';
-import { ITransactionRepository } from '../repositories/itransaction-repository';
+import { Transaction } from '@/domain/transaction';
+import { ListTransactionDTO } from '@/infrastructure/dtos/list-transaction-dto';
+import { ITransactionRepository } from '@/application/repositories/itransaction-repository';
 
 export class ListTransaction {
   constructor(private readonly transactionRepository: ITransactionRepository) {}

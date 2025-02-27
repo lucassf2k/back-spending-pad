@@ -1,16 +1,16 @@
-import { CreateTransaction } from '../../application/use-case/create-transaction';
-import { IController } from '../../infrastructure/express/controllers/icontoller';
-import { CreateTransactionController } from '../../infrastructure/express/controllers/create-transaction-controller';
-import { PrismaTransactionRepository } from '../../infrastructure/repositories/prisma/prisma-transaction-repository';
-import { ListTransactionController } from '../../infrastructure/express/controllers/list-transaction-controller';
-import { ListTransaction } from '../../application/use-case/list-transaction';
-import { GetTransactionController } from '../../infrastructure/express/controllers/get-transaction-controller';
-import { GetTransaction } from '../../application/use-case/get-transaction';
-import { PrismaUserRepository } from '../../infrastructure/repositories/prisma/prisma-user-repository';
-import { DeleteTransactionController } from '../../infrastructure/express/controllers/delete-transaction-controller';
-import { DeleteTransaction } from '../../application/use-case/delete-transaction';
-import { UpdateTransactionController } from '../../infrastructure/express/controllers/update-transaction-controller';
-import { UpdateTransaction } from '../../application/use-case/update-transaction';
+import { CreateTransaction } from '@/application/use-case/create-transaction';
+import { IController } from '@/infrastructure/express/controllers/icontoller';
+import { CreateTransactionController } from '@/infrastructure/express/controllers/create-transaction-controller';
+import { PrismaTransactionRepository } from '@/infrastructure/repositories/prisma/prisma-transaction-repository';
+import { ListTransactionController } from '@/infrastructure/express/controllers/list-transaction-controller';
+import { ListTransaction } from '@/application/use-case/list-transaction';
+import { GetTransactionController } from '@/infrastructure/express/controllers/get-transaction-controller';
+import { GetTransaction } from '@/application/use-case/get-transaction';
+import { PrismaUserRepository } from '@/infrastructure/repositories/prisma/prisma-user-repository';
+import { DeleteTransactionController } from '@/infrastructure/express/controllers/delete-transaction-controller';
+import { DeleteTransaction } from '@/application/use-case/delete-transaction';
+import { UpdateTransactionController } from '@/infrastructure/express/controllers/update-transaction-controller';
+import { UpdateTransaction } from '@/application/use-case/update-transaction';
 
 const transactionRepository = new PrismaTransactionRepository();
 

@@ -1,11 +1,11 @@
 import type { Request, Response } from 'express';
-import { IController } from './icontoller';
+import { IController } from '@/infrastructure/express/controllers/icontoller';
 import {
   ListTransactionDTO,
   ListTransactionValidation,
-} from '../../dtos/list-transaction-dto';
-import { ListTransaction } from '../../../application/use-case/list-transaction';
-import { errorHandler } from '../middlewares/error-handler';
+} from '@/infrastructure/dtos/list-transaction-dto';
+import { ListTransaction } from '@/application/use-case/list-transaction';
+import { errorHandler } from '@/infrastructure/express/middlewares/error-handler';
 
 export class ListTransactionController implements IController {
   constructor(private readonly listTransaction: ListTransaction) {}

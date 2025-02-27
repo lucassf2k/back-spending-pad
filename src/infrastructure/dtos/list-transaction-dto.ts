@@ -2,15 +2,15 @@ import z from 'zod';
 
 export const ListTransactionValidation = z.object({
   userId: z
-    .string({ required_error: 'ID do usuário é obrigatório' })
-    .uuid('UUID inválido'),
+    .string({ required_error: 'User ID is required' })
+    .uuid('Invalid UUID'),
   page: z
-    .number({ invalid_type_error: 'Espera-se um inteiro' })
-    .int('O skip deve ser inteiro')
-    .nonnegative('skip não poder ser negativo'),
+    .number({ invalid_type_error: 'An integer is expected' })
+    .int('Skip must be an integer')
+    .nonnegative('Skip cannot be negative'),
   pageSize: z
-    .number({ invalid_type_error: 'Espera-se um inteiro' })
-    .int('O take deve ser inteiro')
+    .number({ invalid_type_error: 'An integer is expected' })
+    .int('Take must be an integer')
     .optional(),
 });
 

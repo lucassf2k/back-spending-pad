@@ -1,9 +1,9 @@
 import type { Request, Response } from 'express';
-import { IController } from './icontoller';
-import { StatusCode } from '../../../common/status-code';
-import { CreateTransaction } from '../../../application/use-case/create-transaction';
+import { IController } from '@/infrastructure/express/controllers/icontoller';
+import { StatusCode } from '@/common/status-code';
+import { CreateTransaction } from '@/application/use-case/create-transaction';
 import { CreateTransactionValidation } from '../../dtos/create-transaction-dto';
-import { errorHandler } from '../middlewares/error-handler';
+import { errorHandler } from '@/infrastructure/express/middlewares/error-handler';
 
 export class CreateTransactionController implements IController {
   constructor(private readonly createTransaction: CreateTransaction) {}

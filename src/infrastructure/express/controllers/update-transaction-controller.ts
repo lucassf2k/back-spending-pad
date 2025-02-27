@@ -1,8 +1,8 @@
 import type { Request, Response } from 'express';
-import { IController } from './icontoller';
-import { errorHandler } from '../middlewares/error-handler';
-import { UpdateTransactionValidation } from '../../dtos/update-transaction-dto';
-import { UpdateTransaction } from '../../../application/use-case/update-transaction';
+import { IController } from '@/infrastructure/express/controllers/icontoller';
+import { errorHandler } from '@/infrastructure/express/middlewares/error-handler';
+import { UpdateTransactionValidation } from '@/infrastructure/dtos/update-transaction-dto';
+import { UpdateTransaction } from '@/application/use-case/update-transaction';
 
 export class UpdateTransactionController implements IController {
   constructor(private readonly updateTransaction: UpdateTransaction) {}

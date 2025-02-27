@@ -1,9 +1,9 @@
 import { PrismaClient } from '@prisma/client';
-import { User } from '../../../domain/user';
-import { Email } from '../../../domain/email';
-import { makePassword } from '../../../main/factories/password-factory';
-import { IUserRepository } from '../../../application/repositories/iuser-repository';
-import { prismaClient } from '.';
+import { User } from '@/domain/user';
+import { Email } from '@/domain/email';
+import { makePassword } from '@/main/factories/password-factory';
+import { IUserRepository } from '@/application/repositories/iuser-repository';
+import { prismaClient } from '@/infrastructure/repositories/prisma';
 
 export class PrismaUserRepository implements IUserRepository {
   private readonly prismaClient: PrismaClient;

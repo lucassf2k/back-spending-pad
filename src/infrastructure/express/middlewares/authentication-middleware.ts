@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Request, Response, NextFunction } from 'express';
-import { StatusCode } from '../../../common/status-code';
-import { AuthorizationValidation } from './validations';
-import { JwtService } from '../../services/JwtService';
-import { errorHandler } from './error-handler';
-import { ApiError } from '../../../common/api-error';
-import { ENV } from '../../configurations/environments';
 import JWT from 'jsonwebtoken';
+import { StatusCode } from '@/common/status-code';
+import { AuthorizationValidation } from '@/infrastructure/express/middlewares/validations';
+import { JwtService } from '@/infrastructure/services/JwtService';
+import { errorHandler } from '@/infrastructure/express/middlewares/error-handler';
+import { ApiError } from '@/common/api-error';
+import { ENV } from '@/infrastructure/configurations/environments';
 
 type JwTPayload = {
   user: {

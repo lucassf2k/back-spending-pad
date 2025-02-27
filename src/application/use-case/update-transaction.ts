@@ -1,8 +1,8 @@
-import { ApiError } from '../../common/api-error';
-import { StatusCode } from '../../common/status-code';
-import { Transaction } from '../../domain/transaction';
-import { ITransactionRepository } from '../repositories/itransaction-repository';
-import { UpdateTransactionDTO } from '../../infrastructure/dtos/update-transaction-dto';
+import { ApiError } from '@/common/api-error';
+import { StatusCode } from '@/common/status-code';
+import { Transaction } from '@/domain/transaction';
+import { ITransactionRepository } from '@/application/repositories/itransaction-repository';
+import { UpdateTransactionDTO } from '@/infrastructure/dtos/update-transaction-dto';
 
 export class UpdateTransaction {
   constructor(private readonly transactionRepository: ITransactionRepository) {}

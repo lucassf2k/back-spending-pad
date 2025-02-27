@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
-import { Transaction } from '../../../domain/transaction';
-import { prismaClient } from '.';
-import { ITransactionRepository } from '../../../application/repositories/itransaction-repository';
+import { Transaction } from '@/domain/transaction';
+import { prismaClient } from '@/infrastructure/repositories/prisma';
+import { ITransactionRepository } from '@/application/repositories/itransaction-repository';
 
 export class PrismaTransactionRepository implements ITransactionRepository {
   private readonly prismaClient: PrismaClient;

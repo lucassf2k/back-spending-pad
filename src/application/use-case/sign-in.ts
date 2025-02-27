@@ -1,9 +1,9 @@
-import { ApiError } from '../../common/api-error';
-import { StatusCode } from '../../common/status-code';
-import { ENV } from '../../infrastructure/configurations/environments';
-import { SignInDTO } from '../../infrastructure/dtos/sign-in-dto';
-import { JwtService } from '../../infrastructure/services/JwtService';
-import { IUserRepository } from '../repositories/iuser-repository';
+import { ApiError } from '@/common/api-error';
+import { StatusCode } from '@/common/status-code';
+import { ENV } from '@/infrastructure/configurations/environments';
+import { SignInDTO } from '@/infrastructure/dtos/sign-in-dto';
+import { JwtService } from '@/infrastructure/services/JwtService';
+import { IUserRepository } from '@/application/repositories/iuser-repository';
 
 export type UserPayload = {
   id: string;

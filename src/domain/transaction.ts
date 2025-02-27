@@ -1,6 +1,6 @@
-import { ApiError } from '../common/api-error';
-import { StatusCode } from '../common/status-code';
-import { IdService } from '../infrastructure/services/id-service';
+import { ApiError } from '@/common/api-error';
+import { StatusCode } from '@/common/status-code';
+import { IdService } from '@/infrastructure/services/id-service';
 
 export enum TransactionTypes {
   INCOME = 'INCOME',

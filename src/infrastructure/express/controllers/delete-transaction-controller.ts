@@ -1,8 +1,8 @@
 import type { Request, Response } from 'express';
-import { IController } from './icontoller';
-import { errorHandler } from '../middlewares/error-handler';
-import { DeleteTransactionValidation } from '../../dtos/delete-transaction-dto';
-import { DeleteTransaction } from '../../../application/use-case/delete-transaction';
+import { IController } from '@/infrastructure/express/controllers/icontoller';
+import { errorHandler } from '@/infrastructure/express/middlewares/error-handler';
+import { DeleteTransactionValidation } from '@/infrastructure/dtos/delete-transaction-dto';
+import { DeleteTransaction } from '@/application/use-case/delete-transaction';
 
 export class DeleteTransactionController implements IController {
   constructor(private readonly deleteTransaction: DeleteTransaction) {}

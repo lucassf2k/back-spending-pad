@@ -3,16 +3,16 @@ import z from 'zod';
 export const SignInValidation = z.object({
   email: z
     .string({
-      required_error: 'E-mail é obrigatório',
-      invalid_type_error: 'Espera-se uma string',
+      required_error: 'Email is required',
+      invalid_type_error: 'A string is expected',
     })
-    .email('E-mail inválido'),
+    .email('Invalid email'),
   password: z
     .string({
-      required_error: 'Senha é obrigatória',
-      invalid_type_error: 'Espera-se uma string',
+      required_error: 'Password is required',
+      invalid_type_error: 'A string is expected',
     })
-    .min(8, 'Senha precisa ter no mínimo 8 caracteres'),
+    .min(8, 'Password must have at least 8 characters'),
 });
 
 export type SignInDTO = z.infer<typeof SignInValidation>;

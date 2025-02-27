@@ -1,4 +1,4 @@
-import { StatusCode } from './status-code';
+import { StatusCode } from '@/common/status-code';
 
 export class ApiError extends Error {
   readonly code: StatusCode;

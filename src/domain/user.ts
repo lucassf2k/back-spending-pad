@@ -1,7 +1,7 @@
-import { Email } from './email';
-import { IPassword } from './ipassword';
-import { Transaction } from './transaction';
-import { IdService } from '../infrastructure/services/id-service';
+import { Email } from '@/domain/email';
+import { IPassword } from '@/domain/ipassword';
+import { Transaction } from '@/domain/transaction';
+import { IdService } from '@/infrastructure/services/id-service';
 
 export type UserProps = {
   name: string;

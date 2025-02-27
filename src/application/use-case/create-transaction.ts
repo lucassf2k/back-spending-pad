@@ -1,9 +1,9 @@
-import { ApiError } from '../../common/api-error';
-import { StatusCode } from '../../common/status-code';
-import { Transaction } from '../../domain/transaction';
-import { CreateTransactionDTO } from '../../infrastructure/dtos/create-transaction-dto';
-import { ITransactionRepository } from '../repositories/itransaction-repository';
-import { IUserRepository } from '../repositories/iuser-repository';
+import { ApiError } from '@/common/api-error';
+import { StatusCode } from '@/common/status-code';
+import { Transaction } from '@/domain/transaction';
+import { CreateTransactionDTO } from '@/infrastructure/dtos/create-transaction-dto';
+import { ITransactionRepository } from '@/application/repositories/itransaction-repository';
+import { IUserRepository } from '@/application/repositories/iuser-repository';
 
 export class CreateTransaction {
   constructor(

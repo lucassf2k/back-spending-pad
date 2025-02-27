@@ -1,8 +1,8 @@
 import type { Request, Response } from 'express';
-import { IController } from './icontoller';
-import { CreateUserValidation } from '../../dtos/create-user-dto';
-import { CreateUser } from '../../../application/use-case/create-user';
-import { errorHandler } from '../middlewares/error-handler';
+import { IController } from '@/infrastructure/express/controllers/icontoller';
+import { CreateUserValidation } from '@/infrastructure/dtos/create-user-dto';
+import { CreateUser } from '@/application/use-case/create-user';
+import { errorHandler } from '@/infrastructure/express/middlewares/error-handler';
 
 export class CreateUserController implements IController {
   constructor(private readonly createUser: CreateUser) {}

@@ -1,6 +1,6 @@
-import { User } from '../../domain/user';
-import { IUserRepository } from '../repositories/iuser-repository';
-import { GetUserOfIdDTO } from '../../infrastructure/dtos/get-user-dto';
+import { User } from '@/domain/user';
+import { IUserRepository } from '@/application/repositories/iuser-repository';
+import { GetUserOfIdDTO } from '@/infrastructure/dtos/get-user-dto';
 
 export class GetUserOfId {
   constructor(private readonly userRepository: IUserRepository) {}

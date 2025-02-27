@@ -1,8 +1,8 @@
 import type { Request, Response } from 'express';
-import { IController } from './icontoller';
-import { errorHandler } from '../middlewares/error-handler';
-import { GetTransactionValidation } from '../../dtos/get-transaction-dto';
-import { GetTransaction } from '../../../application/use-case/get-transaction';
+import { IController } from '@/infrastructure/express/controllers/icontoller';
+import { errorHandler } from '@/infrastructure/express/middlewares/error-handler';
+import { GetTransactionValidation } from '@/infrastructure/dtos/get-transaction-dto';
+import { GetTransaction } from '@/application/use-case/get-transaction';
 
 export class GetTransactionController implements IController {
   constructor(private readonly getTransaction: GetTransaction) {}

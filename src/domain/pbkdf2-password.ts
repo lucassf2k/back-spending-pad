@@ -1,5 +1,5 @@
 import { pbkdf2Sync, randomBytes } from 'node:crypto';
-import { IPassword } from './ipassword';
+import { IPassword } from '@/domain/ipassword';
 
 export class PBKDF2Password implements IPassword {
   readonly algorithm = 'PBKDF2';
