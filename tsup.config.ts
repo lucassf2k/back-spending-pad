@@ -5,6 +5,6 @@ export default defineConfig({
   clean: true,
   format: ['esm'],
   sourcemap: true,
-  target: 'es2022',
+  target: 'esnext',
   outDir: 'dist',
 });
