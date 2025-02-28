@@ -1,9 +1,14 @@
-import { randomBytes } from 'node:crypto';
+import 'dotenv/config';
+import { z } from 'zod';
 
-const APP_PORT = Number(process.env.APP_PORT) || 3001;
-const RANDOM_BYTES = randomBytes(20).toString('hex');
-const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY || RANDOM_BYTES;
-export const ENV = Object.freeze({
-  APP_PORT,
-  JWT_SECRET_KEY,
+const EnvSchema = z.object({
+  APP_PORT: z.coerce.number().min(1),
+  JWT_SECRET_KEY: z.coerce.string().min(30),
+  API_VERSION: z.literal('v1'),
+  LOG_LEVEL: z.union([z.literal('info'), z.literal('debug')]).default('info'),
+  NODE_ENV: z
+    .union([z.literal('development'), z.literal('production')])
+    .default('development'),
 });
+
+export const ENV = EnvSchema.parse(process.env);

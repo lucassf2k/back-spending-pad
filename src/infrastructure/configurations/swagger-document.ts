@@ -12,7 +12,7 @@ export const SwaggerDocument = {
     },
   ],
   paths: {
-    '/api/users': {
+    '/api/v1/users': {
       post: {
         summary: 'Create a new user',
         requestBody: {
@@ -37,7 +37,7 @@ export const SwaggerDocument = {
         },
       },
     },
-    '/api/users/sign-in': {
+    '/api/v1/users/sign-in': {
       post: {
         summary: 'Sign in to the user account',
         requestBody: {
@@ -61,7 +61,7 @@ export const SwaggerDocument = {
         },
       },
     },
-    '/api/transactions': {
+    '/api/v1/transactions': {
       post: {
         summary: 'Create a new transaction',
         security: [{ BearerAuth: [] }],
@@ -87,7 +87,7 @@ export const SwaggerDocument = {
         },
       },
     },
-    '/api/transactions/{id}': {
+    '/api/v1/transactions/{id}': {
       delete: {
         summary: 'Delete a specific transaction',
         security: [{ BearerAuth: [] }],
@@ -167,7 +167,7 @@ export const SwaggerDocument = {
         },
       },
     },
-    '/api/transactions?page=1': {
+    '/api/v1/transactions?page=1': {
       get: {
         summary: 'Get all user transactions',
         security: [{ BearerAuth: [] }],

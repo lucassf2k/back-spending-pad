@@ -5,9 +5,9 @@
   "main": "dist/main.mjs",
   "scripts": {
     "build": "tsup",
-    "start": "node ./dist/main.mjs",
+    "start": "node --env-file .env ./dist/main.mjs",
     "start:cluster": "node ./dist/main-cluster.js",
-    "start:dev": "nodemon --watch 'src/' --env-file .env --exec 'ts-node -r tsconfig-paths/register --files src/main.ts'",
+    "start:dev": "nodemon --watch 'src/' --exec  'ts-node -r tsconfig-paths/register --files src/main.ts'",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -42,6 +42,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "jest": "^29.7.0",
     "nodemon": "^3.1.0",
+    "pino-pretty": "^13.0.0",
     "prettier": "^3.2.5",
     "prisma": "^5.12.0",
     "ts-jest": "^29.2.4",
@@ -54,10 +55,13 @@
   "dependencies": {
     "@prisma/client": "^5.12.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^4.19.1",
     "express-async-errors": "^3.1.1",
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
+    "pino": "^9.6.0",
+    "pino-http": "^10.4.0",
     "swagger-ui-express": "^5.0.0",
     "uuid": "^11.1.0",
     "zod": "^3.22.4"
