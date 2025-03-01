@@ -20,7 +20,7 @@ export function ExpressApplication() {
   app.use(errorHandler);
   app.listen(ENV.APP_PORT, () =>
     Logger.info(
-      `HTTP server is running on PORT ${ENV.APP_PORT}! (http://localhost:${ENV.APP_PORT}/api/${ENV.API_VERSION}/docs)`,
+      `HTTP server is running on PORT ${ENV.APP_PORT}! (http://localhost:${ENV.APP_PORT}/api/v1/docs)`,
     ),
   );
 }
